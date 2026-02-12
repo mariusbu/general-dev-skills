@@ -1,5 +1,7 @@
 # General Dev Skills
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A Claude Code plugin that provides 10 general-purpose development skills. Each skill gives Claude structured workflows, reference materials, and discipline guidelines for a specific engineering role.
 
 ## Installation
