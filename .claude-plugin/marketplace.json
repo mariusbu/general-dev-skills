@@ -1,0 +1,20 @@
+{
+  "name": "general-dev-skills",
+  "owner": {
+    "name": "Marius"
+  },
+  "metadata": {
+    "description": "General development skills for Claude Code. Incremental progress, boring solutions, clear intent.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "general-dev-skills",
+      "description": "10 general development skills: backend, frontend, fullstack, devops, solution architecture, code quality/debugging, PM, QA, technical project lead, and technical writing. Auto-triggered based on task context.",
+      "version": "1.0.0",
+      "source": "./plugins/general-dev-skills",
+      "tags": ["engineering", "backend", "frontend", "fullstack", "devops", "architecture", "debugging", "pm", "qa", "documentation"],
+      "category": "development"
+    }
+  ]
+}

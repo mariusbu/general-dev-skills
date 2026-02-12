@@ -1,0 +1,8 @@
+{
+  "name": "general-dev-skills",
+  "description": "10 general development skills: backend, frontend, fullstack, devops, solution architecture, code quality/debugging, PM, QA, technical project lead, and technical writing",
+  "version": "1.0.0",
+  "author": {
+    "name": "Marius"
+  }
+}
