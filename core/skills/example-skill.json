@@ -1,0 +1,24 @@
+{
+  "name": "general-backend-developer",
+  "description": "This skill should be used when designing or implementing backend API endpoints, database schemas, query optimization, server-side business logic, or authentication/authorization flows. Triggers on API design, database work, or server-side implementation tasks.",
+  "version": "1.0.0",
+  "triggers": ["api", "database", "backend", "server-side"],
+  "workflows": [
+    "implement_api_endpoint",
+    "design_database_schema",
+    "optimize_query",
+    "implement_authentication"
+  ],
+  "references": [
+    "clean-code",
+    "solid-principles",
+    "test-driven-development",
+    "architecture-principles",
+    "error-handling"
+  ],
+  "user_invocable": false,
+  "format": "standard-v1",
+  "author": "Marius Bugge Monsen",
+  "license": "MIT",
+  "homepage": "https://github.com/mariusbu/general-dev-skills"
+}
