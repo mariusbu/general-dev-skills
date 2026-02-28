@@ -25,3 +25,9 @@ Inject everything a function needs to do its job, and no more. High-level module
 - **Type checking with if/switch**: Should use polymorphism (OCP violation)
 - **Fat interfaces**: Clients forced to implement unused methods (ISP violation)
 - **Hard-coded dependencies**: Direct instantiation instead of injection (DIP violation)
+
+## See Also
+
+- [Clean Code Principles](clean-code.md) - Writing maintainable code that follows SOLID principles
+- [Test-Driven Development](test-driven-development.md) - Using TDD to achieve SOLID design
+- [Architecture Principles](architecture-principles.md) - Applying SOLID at system level

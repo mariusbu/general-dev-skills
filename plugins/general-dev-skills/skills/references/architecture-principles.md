@@ -69,6 +69,12 @@ When choosing between architectural approaches:
 4. **Consistency** - Does this match existing patterns?
 5. **Simplicity** - Is this the simplest solution that works?
 
+## See Also
+
+- [SOLID Principles](solid-principles.md) - Object-oriented design principles for maintainable architecture
+- [Clean Code Principles](clean-code.md) - Writing code that supports good architecture
+- [Test-Driven Development](test-driven-development.md) - Building testable architectures
+
 ## References
 
 - Clean Architecture: A Craftsman's Guide to Software Structure and Design - Robert C. Martin

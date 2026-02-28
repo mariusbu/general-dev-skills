@@ -196,6 +196,12 @@ Use same libraries/utilities as existing code. Follow existing test patterns. Do
 - xUnit
 - MSTest
 
+## See Also
+
+- [Clean Code Principles](clean-code.md) - For writing maintainable test code
+- [SOLID Principles](solid-principles.md) - For designing testable software architecture
+- [Debugging Methodology](debugging-methodology.md) - For troubleshooting test failures
+
 ## References
 
 - Test-Driven Development by Example - Kent Beck
