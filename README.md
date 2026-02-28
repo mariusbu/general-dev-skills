@@ -47,7 +47,7 @@ graph LR
 
 ## 🎯 Skills
 
-10 general-purpose development skills covering the full software development lifecycle:
+11 general-purpose development skills covering the full software development lifecycle:
 
 | Skill | Triggers | Platforms | Auto/Manual |
 |---|---|---|---|
@@ -57,6 +57,7 @@ graph LR
 | **DevOps** | CI/CD, infrastructure | ✅ All | Auto |
 | **Solution Architect** | System design, tech selection | ✅ All | Auto |
 | **Technical Project Lead** | System assessment, tech debt | ✅ All | Auto |
+| **Scientific Debugging** | Debugging, root cause analysis | ✅ All | Auto |
 | **Code Quality & Debugger** | Code reviews, refactoring | ✅ All | `/general-code-quality-debugger` |
 | **PM** | Issue creation, planning | ✅ All | `/general-pm` |
 | **QA** | Test plans, automation | ✅ All | `/general-qa` |
@@ -72,7 +73,6 @@ graph LR
 general-dev-skills/
 ├── core/              # Platform-agnostic skills & references
 ├── adapters/          # AI-specific format converters
-├── integrations/     # IDE/CLI integrations
 └── plugins/           # Legacy Claude plugin (maintained)
 ```
 

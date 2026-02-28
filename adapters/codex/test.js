@@ -61,8 +61,20 @@ const descValid = adapter.validateSkill(longDesc);
 console.log(`  1025-char description: ${descValid ? 'PASS (unexpected)' : 'REJECTED (correct)'}`);
 console.log();
 
-// Test 6: Generate skill dir (commented out to avoid file system changes)
-// console.log('6. Generating skill directory...');
-// adapter.generateSkillDir(testSkill, '## Workflow: Test\n\n1. Do the thing');
+// Test 6: Convert real skill from example-skill.json
+console.log('6. Real Skill Conversion:');
+try {
+  const realSkill = require('../../core/skills/example-skill.json');
+  const realResult = adapter.convert(realSkill);
+  console.log(`Real skill name: ${realResult.name}`);
+  console.log(`Format: ${realResult.format}`);
+  console.log();
+} catch (error) {
+  console.error('Real skill conversion failed:', error.message);
+}
+
+// Test 7: Generate files (commented out to avoid file system changes)
+// console.log('7. Generating files...');
+// adapter.generate(testSkill, '## Workflow: Test\n\n1. Do the thing');
 
 console.log('OpenAI Codex Adapter tests completed!');

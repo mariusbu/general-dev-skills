@@ -39,8 +39,20 @@ try {
   console.error('Conversion failed:', error.message);
 }
 
-// Test 4: Generate plugin file (commented out to avoid file system changes)
-// console.log('4. Generating plugin file...');
-// adapter.generatePluginFile(testSkill);
+// Test 4: Convert real skill from example-skill.json
+console.log('4. Real Skill Conversion:');
+try {
+  const realSkill = require('../../core/skills/example-skill.json');
+  const realResult = adapter.convert(realSkill);
+  console.log(`Real skill name: ${realResult.name}`);
+  console.log(`References: ${realResult.references.length}`);
+  console.log();
+} catch (error) {
+  console.error('Real skill conversion failed:', error.message);
+}
 
-console.log('✅ Claude Adapter tests completed!');
+// Test 5: Generate files (commented out to avoid file system changes)
+// console.log('5. Generating files...');
+// adapter.generate(testSkill);
+
+console.log('Claude Adapter tests completed!');

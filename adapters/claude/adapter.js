@@ -53,7 +53,7 @@ class ClaudeAdapter extends BaseAdapter {
    * @param {Object} skill - Standard skill definition
    * @param {string} outputDir - Output directory
    */
-  generatePluginFile(skill, outputDir = 'plugins/general-dev-skills') {
+  generate(skill, outputDir = 'plugins/general-dev-skills') {
     const claudeSkill = this.convert(skill);
     const pluginDir = path.join(outputDir, '.claude-plugin');
     

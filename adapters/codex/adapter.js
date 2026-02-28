@@ -65,7 +65,7 @@ class CodexAdapter extends BaseAdapter {
    * @param {string} skillBody - Markdown body content (without frontmatter)
    * @param {string} outputDir - Output directory
    */
-  generateSkillDir(skill, skillBody, outputDir = 'output/codex/.agents/skills') {
+  generate(skill, skillBody, outputDir = 'output/codex/.agents/skills') {
     const converted = this.convert(skill);
 
     const skillDir = path.join(outputDir, skill.name);

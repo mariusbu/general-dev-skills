@@ -52,8 +52,20 @@ try {
   console.error('Conversion failed:', error.message);
 }
 
-// Test 5: Generate extension (commented out to avoid file system changes)
-// console.log('5. Generating extension...');
-// adapter.generateExtension(testSkill, '## Workflow: Test\n\n1. Do the thing');
+// Test 5: Convert real skill from example-skill.json
+console.log('5. Real Skill Conversion:');
+try {
+  const realSkill = require('../../core/skills/example-skill.json');
+  const realResult = adapter.convert(realSkill);
+  console.log(`Real skill name: ${realResult.name}`);
+  console.log(`Manifest version: ${realResult.manifest.version}`);
+  console.log();
+} catch (error) {
+  console.error('Real skill conversion failed:', error.message);
+}
+
+// Test 6: Generate files (commented out to avoid file system changes)
+// console.log('6. Generating files...');
+// adapter.generate(testSkill, '## Workflow: Test\n\n1. Do the thing');
 
 console.log('Gemini CLI Adapter tests completed!');

@@ -1,8 +1,21 @@
 {
   "name": "general-dev-skills",
-  "description": "10 general development skills: backend, frontend, fullstack, devops, solution architecture, code quality/debugging, PM, QA, technical project lead, and technical writing",
+  "description": "11 general development skills: backend, frontend, fullstack, devops, solution architecture, code quality/debugging, scientific debugging, PM, QA, technical project lead, and technical writing",
   "version": "1.0.0",
   "author": {
     "name": "mariusbu"
-  }
+  },
+  "skills": [
+    "general-backend-developer",
+    "general-frontend-developer",
+    "general-fullstack-developer",
+    "general-devops",
+    "general-solution-architect",
+    "general-technical-project-lead",
+    "general-code-quality-debugger",
+    "general-scientific-debugging",
+    "general-pm",
+    "general-qa",
+    "general-technical-writer"
+  ]
 }

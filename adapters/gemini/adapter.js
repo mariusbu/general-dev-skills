@@ -46,7 +46,7 @@ class GeminiAdapter extends BaseAdapter {
    * @param {string} skillBody - Markdown body content (without frontmatter)
    * @param {string} outputDir - Output directory
    */
-  generateExtension(skill, skillBody, outputDir = 'output/gemini/general-dev-skills') {
+  generate(skill, skillBody, outputDir = 'output/gemini/general-dev-skills') {
     const converted = this.convert(skill);
 
     // Write gemini-extension.json manifest
