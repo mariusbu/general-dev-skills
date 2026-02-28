@@ -42,4 +42,4 @@ user-invocable: true
 - **Update docs alongside code changes** — if the code changes, the docs change in the same commit
 - **Choose boring clarity** — no clever wordplay or jargon; if you need to explain the explanation, it's too complex
 
-Refer to [references/documentation-standards.md](references/documentation-standards.md) for formatting and style guidelines.
+Refer to [references/documentation-standards.md](references/documentation-standards.md) for formatting and style guidelines and [references/test-driven-development.md](references/test-driven-development.md) for TDD documentation patterns.

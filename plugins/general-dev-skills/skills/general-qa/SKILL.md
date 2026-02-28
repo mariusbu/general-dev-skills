@@ -54,4 +54,4 @@ Include these in every test plan for features that handle user input or sensitiv
 - **3 attempts max** — after 3 failed attempts at making a test pass, stop, document what failed, and try a fundamentally different angle
 - **Verify with existing code** — find 3 similar tests in the codebase and match their patterns before writing new ones
 
-Refer to [references/test-guidelines.md](references/test-guidelines.md) for testing standards, [references/quality-gates.md](references/quality-gates.md) for definition of done, [references/debugging-methodology.md](references/debugging-methodology.md) for the 3-attempt protocol, and [references/implementation-flow.md](references/implementation-flow.md) for the TDD cycle.
+Refer to [references/quality-gates.md](references/quality-gates.md) for definition of done, [references/debugging-methodology.md](references/debugging-methodology.md) for the 3-attempt protocol, and [references/test-driven-development.md](references/test-driven-development.md) for the TDD cycle.
