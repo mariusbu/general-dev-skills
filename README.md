@@ -18,7 +18,7 @@ graph LR
     B --> C[Claude]
     B --> D[Mistral]
     B --> E[Gemini]
-    B --> F[OpenAI]
+    B --> F[Codex]
 ```
 
 ## 📦 Installation
@@ -33,20 +33,16 @@ graph LR
 
 ### For Other Platforms
 
-1. **Install Node.js** (v18+ recommended)
-2. **Clone the repository**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/mariusbu/general-dev-skills.git
    cd general-dev-skills
    ```
-3. **Install dependencies**:
+2. **Run the adapter for your platform**:
    ```bash
-   npm install
-   ```
-4. **Use the adapter for your platform**:
-   ```bash
-   # Example: Generate Mistral plugin
-   node adapters/mistral/generate.js
+   node adapters/gemini/test.js
+   node adapters/mistral/test.js
+   node adapters/codex/test.js
    ```
 
 ## 🎯 Skills
@@ -99,68 +95,29 @@ Skills are defined in JSON format for platform independence:
 
 | Platform | Status | Adapter | Format |
 |----------|--------|---------|--------|
-| **Claude** | ✅ Production | `adapters/claude` | JSON |
-| **Mistral** | 🔧 Ready | `adapters/mistral` | YAML |
-| **Gemini** | 🔧 Ready | `adapters/gemini` | Gems |
-| **OpenAI** | 🔧 Ready | `adapters/openai` | Functions |
+| **Claude Code** | ✅ Production | `adapters/claude` | SKILL.md + JSON plugin |
+| **Gemini CLI** | ✅ Ready | `adapters/gemini` | SKILL.md + JSON manifest |
+| **Mistral Vibe** | ✅ Ready | `adapters/mistral` | SKILL.md |
+| **OpenAI Codex** | ✅ Ready | `adapters/codex` | SKILL.md |
 
 ## 🔄 Adapters
 
 Convert standard skills to platform-specific formats:
 
-### Claude Adapter
+### Example
 ```javascript
-const { ClaudeAdapter } = require('./adapters/claude');
-const skill = require('./core/skills/backend-developer.json');
+const GeminiAdapter = require('./adapters/gemini/adapter');
+const skill = require('./core/skills/example-skill.json');
 
-const claudeSkill = new ClaudeAdapter().convert(skill);
+const adapter = new GeminiAdapter();
+const result = adapter.convert(skill);
+console.log(result.frontmatter);
 ```
-
-### Mistral Adapter (Coming Soon)
-```yaml
-# Mistral plugin format
-name: general-backend-developer
-model: codestral.mistral.ai
-endpoints:
-  - path: /api/implement_endpoint
-    method: POST
-```
-
-## 📚 References
-
-16 comprehensive reference guides covering:
-
-- **Clean Code Principles** - Writing maintainable code
-- **SOLID Principles** - Object-oriented design
-- **Test-Driven Development** - TDD workflows
-- **Architecture Principles** - System design
-- **Debugging Methodology** - Problem solving
-- **Accessibility Checklist** - Frontend best practices
-- **And 10 more...**
-
-All references are in `core/references/` and accessible across all platforms.
-
-## 🛠️ Development
-
-### Adding New Skills
-
-1. **Create skill JSON** in `core/skills/`
-2. **Add references** to `core/references/` (if needed)
-3. **Test with adapters**
-4. **Document** the skill
-
-### Adding New AI Platforms
-
-1. **Create adapter** in `adapters/[platform]/`
-2. **Implement** `BaseAdapter` interface
-3. **Add tests**
-4. **Update documentation**
 
 ## 📖 Documentation
 
 - **[Skill Format Specification](core/skills/SKILL_FORMAT.md)** - Standard skill JSON format
 - **[Adapter Interface](adapters/README.md)** - How to create new adapters
-- **[Migration Guide](docs/MIGRATION.md)** - Moving from v1 to v2
 
 ## 📜 License
 
@@ -171,4 +128,3 @@ MIT License - See [LICENSE](LICENSE) for details.
 - Original skills based on [awattar/claude-code-best-practices](https://github.com/awattar/claude-code-best-practices)
 - Multi-AI architecture inspired by modern plugin systems
 - Adapters follow best practices from each AI platform
-=======
