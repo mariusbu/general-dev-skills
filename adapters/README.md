@@ -1,55 +1,101 @@
 # AI Adapters
 
-This directory contains adapters that convert the platform-agnostic skill format to specific AI platform formats.
+This directory contains adapters that convert the platform-agnostic skill format to specific AI coding CLI tool formats.
+
+## Key Finding: Shared SKILL.md Format
+
+All four major coding CLI tools use the same **SKILL.md** format — markdown files with YAML frontmatter. The adapters handle the per-platform differences:
+
+| CLI Tool | Skill Location | Context File | Config Format |
+|----------|---------------|--------------|---------------|
+| Claude Code | `.claude/skills/` | `CLAUDE.md` | JSON |
+| Gemini CLI | `skills/` (in extensions) | `GEMINI.md` | JSON manifest |
+| Mistral Vibe | `.vibe/skills/` or `.agents/skills/` | `AGENTS.md` | TOML |
+| OpenAI Codex | `.agents/skills/` | `AGENTS.md` | TOML |
 
 ## Available Adapters
 
-- **Claude** - `adapters/claude/` - For Anthropic Claude models
-- **Mistral** - `adapters/mistral/` - For Mistral AI models (Codestral, etc.)
-- **Gemini** - `adapters/gemini/` - For Google Gemini models
-- **OpenAI** - `adapters/openai/` - For OpenAI compatible models
+- **Claude** - `adapters/claude/` - Generates Claude Code plugin format (`claude-plugin-v1`)
+- **Gemini** - `adapters/gemini/` - Generates Gemini CLI extension with `gemini-extension.json` manifest
+- **Mistral** - `adapters/mistral/` - Generates Mistral Vibe skill directories with `allowed-tools` support
+- **Codex** - `adapters/codex/` - Generates OpenAI Codex skills under `.agents/skills/` with strict name validation
 
 ## Adapter Interface
 
-Each adapter must implement:
+Each adapter extends `BaseAdapter` and must implement:
 
 ```javascript
-class BaseAdapter {
-  /**
-   * Convert skill to platform-specific format
-   * @param {Object} skill - Standard skill definition
-   * @returns {Object} Platform-specific skill format
-   */
-  convert(skill) {
-    // Implementation specific to each AI platform
+class MyAdapter extends BaseAdapter {
+  _convert(skill) {
+    // Convert standard skill JSON to platform-specific format
+    // Returns an object with at minimum: { name, format, frontmatter }
   }
 
-  /**
-   * Get adapter metadata
-   * @returns {Object} Adapter information
-   */
   static getMetadata() {
     return {
-      name: 'Adapter Name',
-      platform: 'AI Platform',
-      version: '1.0.0'
+      name: 'MyAdapter',
+      platform: 'my-platform',
+      version: '1.0.0',
+      description: 'Adapter for My Platform',
+      format: 'my-format-v1',
+      capabilities: ['skills']
     };
   }
 }
 ```
 
-## Adding New Adapters
+Adapters may optionally override `validateSkill(skill)` for platform-specific validation (e.g., Codex enforces `^[a-z0-9-]+$` name pattern).
 
-1. Create a new directory under `adapters/`
-2. Implement the adapter interface
-3. Add tests in `__tests__/`
-4. Update this README
+## Platform-Specific Differences
+
+### Frontmatter Fields
+
+| Field | Claude | Gemini | Mistral Vibe | Codex |
+|-------|--------|--------|--------------|-------|
+| `name` | Required (`general-` prefix) | Required | Required | Required (`^[a-z0-9-]+$`, max 64 chars) |
+| `description` | Required | Required | Required | Required (max 1024 chars) |
+| `user-invocable` | Optional | Optional | Optional | N/A |
+| `license` | N/A | N/A | Optional | Optional |
+| `allowed-tools` | N/A | N/A | Optional | Optional |
+
+### Output Structure
+
+**Claude:** JSON plugin config in `.claude-plugin/plugin.json`
+
+**Gemini:** Extension directory with `gemini-extension.json` + `skills/{name}/SKILL.md`
+
+**Mistral Vibe:** Skill directories at `skills/{name}/SKILL.md`
+
+**Codex:** Skill directories at `.agents/skills/{name}/SKILL.md`
 
 ## Usage
 
 ```javascript
-const { ClaudeAdapter } = require('./adapters/claude');
-const skill = require('../core/skills/backend-developer.json');
+// Convert a standard skill definition
+const GeminiAdapter = require('./adapters/gemini/adapter');
+const skill = require('./core/skills/example-skill.json');
 
-const claudeSkill = new ClaudeAdapter().convert(skill);
+const adapter = new GeminiAdapter();
+const result = adapter.convert(skill);
+console.log(result.frontmatter);
+
+// Generate files to disk
+adapter.generateExtension(skill, skillBodyMarkdown, 'output/gemini/general-dev-skills');
 ```
+
+## Testing
+
+```bash
+node adapters/claude/test.js
+node adapters/gemini/test.js
+node adapters/mistral/test.js
+node adapters/codex/test.js
+```
+
+## Adding New Adapters
+
+1. Create a new directory under `adapters/`
+2. Extend `BaseAdapter` from `base_adapter.js`
+3. Implement `_convert(skill)` and `static getMetadata()`
+4. Add a `test.js` following the existing test pattern
+5. Update this README
